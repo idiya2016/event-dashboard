@@ -25,7 +25,7 @@ const EventContext = createContext<EventContextType | undefined>(undefined);
 
 export const EventProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [state, dispatch] = useReducer(eventReducer, initialState);
-  const { success, error } = useToast();
+  const { success } = useToast();
 
   // Load events from localStorage on mount
   useEffect(() => {

@@ -29,7 +29,6 @@ export const CalendarView: React.FC<CalendarViewProps> = ({ events, onDayClick }
     const month = currentMonth.getMonth();
 
     const firstDayOfMonth = new Date(year, month, 1);
-    const lastDayOfMonth = new Date(year, month + 1, 0);
     const startDate = new Date(firstDayOfMonth);
     startDate.setDate(startDate.getDate() - firstDayOfMonth.getDay());
 

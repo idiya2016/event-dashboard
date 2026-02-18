@@ -72,7 +72,6 @@ export const EventDetails: React.FC = () => {
   const attendees = event.attendees || [];
   const confirmedCount = attendees.filter((a) => a.status === 'confirmed').length;
   const pendingCount = attendees.filter((a) => a.status === 'pending').length;
-  const declinedCount = attendees.filter((a) => a.status === 'declined').length;
 
   return (
     <div className={styles.detailsPage}>

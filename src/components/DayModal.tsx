@@ -32,8 +32,6 @@ export const DayModal: React.FC<DayModalProps> = ({ isOpen, onClose, date, event
     });
   };
 
-  const defaultImage = 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800&h=400&fit=crop';
-
   return (
     <Modal
       isOpen={isOpen}

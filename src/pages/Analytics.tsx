@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useEventContext } from '../context';
-import { Card, CardContent, Button, Skeleton } from '../components';
+import { Card, CardContent } from '../components';
 import {
   BarChart,
   Bar,
@@ -116,7 +116,6 @@ export const Analytics: React.FC = () => {
     background: isDarkMode ? '#1f2937' : '#ffffff',
   };
 
-  const barColors = isDarkMode ? ['#a78bfa', '#f472b6', '#60a5fa', '#34d399', '#fbbf24'] : ['#7c3aed', '#ec4899', '#3b82f6', '#10b981', '#f59e0b'];
   const pieColors = isDarkMode ? ['#a78bfa', '#f472b6', '#60a5fa', '#34d399', '#fbbf24'] : ['#7c3aed', '#ec4899', '#3b82f6', '#10b981', '#f59e0b'];
 
   const formatDate = (dateString: string): string => {
