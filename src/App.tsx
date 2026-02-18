@@ -1,26 +1,32 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { EventProvider, ToastProvider } from './context';
+import { Navbar, ToastContainer } from './components';
+import { Dashboard, EventForm, EventDetails, Analytics } from './pages';
+import './styles/global.css';
 
-function App() {
+const App: React.FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ToastProvider>
+      <EventProvider>
+        <Router>
+          <div className="app">
+            <Navbar />
+            <main>
+              <Routes>
+                <Route path="/" element={<Dashboard />} />
+                <Route path="/analytics" element={<Analytics />} />
+                <Route path="/events/new" element={<EventForm />} />
+                <Route path="/events/:id" element={<EventDetails />} />
+                <Route path="/events/:id/edit" element={<EventForm />} />
+              </Routes>
+            </main>
+            <ToastContainer />
+          </div>
+        </Router>
+      </EventProvider>
+    </ToastProvider>
   );
-}
+};
 
 export default App;

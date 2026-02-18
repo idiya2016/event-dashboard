@@ -1,0 +1,259 @@
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-sticky);
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(229, 231, 235, 0.5);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  transition: all var(--transition-base);
+}
+
+[data-theme='dark'] .navbar {
+  background: rgba(31, 41, 55, 0.85);
+  border-bottom-color: rgba(55, 65, 81, 0.5);
+}
+
+.navbarContainer {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 72px;
+  padding: 0 var(--space-6);
+}
+
+/* ========================================
+   LOGO
+   ======================================== */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  text-decoration: none;
+  color: var(--text-primary);
+  font-weight: 800;
+  font-size: 1.5rem;
+  font-family: var(--font-poppins);
+  transition: all var(--transition-fast);
+  position: relative;
+}
+
+.logo:hover {
+  color: var(--primary);
+}
+
+.logoIcon {
+  font-size: 2rem;
+  filter: drop-shadow(0 2px 4px rgba(124, 58, 237, 0.3));
+  transition: transform var(--transition-bounce);
+}
+
+.logo:hover .logoIcon {
+  transform: rotate(-10deg) scale(1.1);
+}
+
+.logoText {
+  letter-spacing: -0.03em;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ========================================
+   NAV LINKS
+   ======================================== */
+.navLinks {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.navLink {
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-lg);
+  text-decoration: none;
+  color: var(--text-secondary);
+  font-weight: 500;
+  font-size: 0.9375rem;
+  transition: all var(--transition-fast);
+  position: relative;
+  overflow: hidden;
+}
+
+.navLink::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: var(--gradient-primary);
+  transform: translateX(-50%);
+  transition: width var(--transition-base);
+  border-radius: var(--radius-full);
+}
+
+.navLink:hover {
+  color: var(--text-primary);
+  background: var(--bg-tertiary);
+}
+
+.navLink:hover::before {
+  width: 80%;
+}
+
+.navLink.active {
+  color: var(--primary);
+  background: var(--gradient-subtle);
+}
+
+.navLink.active::before {
+  width: 80%;
+}
+
+/* ========================================
+   DARK MODE TOGGLE
+   ======================================== */
+.themeToggle {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-lg);
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  margin-left: var(--space-4);
+}
+
+.themeToggle:hover {
+  background: var(--primary);
+  color: var(--text-inverse);
+  border-color: var(--primary);
+  transform: rotate(15deg);
+  box-shadow: var(--shadow-colored);
+}
+
+.themeToggle:active {
+  transform: scale(0.9);
+}
+
+/* ========================================
+   MOBILE MENU BUTTON
+   ======================================== */
+.mobileMenuButton {
+  display: none;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-lg);
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-light);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.mobileMenuButton span {
+  width: 20px;
+  height: 2px;
+  background: var(--text-secondary);
+  border-radius: var(--radius-full);
+  transition: all var(--transition-fast);
+}
+
+.mobileMenuButton:hover {
+  background: var(--primary);
+  border-color: var(--primary);
+}
+
+.mobileMenuButton:hover span {
+  background: var(--text-inverse);
+}
+
+.mobileMenuButton.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.mobileMenuButton.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.mobileMenuButton.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -6px);
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+@media (max-width: 768px) {
+  .navbarContainer {
+    height: 64px;
+    padding: 0 var(--space-4);
+  }
+  
+  .logo {
+    font-size: 1.25rem;
+  }
+  
+  .logoIcon {
+    font-size: 1.75rem;
+  }
+  
+  .navLinks {
+    position: fixed;
+    top: 64px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--surface-primary);
+    flex-direction: column;
+    padding: var(--space-6);
+    gap: var(--space-2);
+    transform: translateX(100%);
+    transition: transform var(--transition-slow);
+  }
+  
+  .navLinks.open {
+    transform: translateX(0);
+  }
+  
+  .navLink {
+    width: 100%;
+    padding: var(--space-4);
+    font-size: 1rem;
+    text-align: center;
+  }
+  
+  .mobileMenuButton {
+    display: flex;
+  }
+  
+  .themeToggle {
+    width: 40px;
+    height: 40px;
+    margin-left: var(--space-2);
+  }
+}
+
+/* ========================================
+   SCROLLED STATE
+   ======================================== */
+.navbar.scrolled {
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+[data-theme='dark'] .navbar.scrolled {
+  background: rgba(31, 41, 55, 0.95);
+}

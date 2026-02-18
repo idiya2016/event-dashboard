@@ -1,0 +1,262 @@
+.calendar {
+  background: var(--surface-primary);
+  border-radius: var(--radius-2xl);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+  padding: var(--space-6);
+  border: 1px solid var(--border-light);
+}
+
+.calendarHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-6);
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.monthYear {
+  font-size: 1.5rem;
+  font-weight: 700;
+  font-family: var(--font-poppins);
+  color: var(--text-primary);
+  margin: 0;
+  min-width: 200px;
+  text-align: center;
+  letter-spacing: -0.02em;
+}
+
+.navButton {
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  width: 44px;
+  height: 44px;
+  font-size: 1.5rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+  line-height: 1;
+}
+
+.navButton:hover {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
+  transform: scale(1.1);
+  box-shadow: var(--shadow-colored);
+}
+
+.todayButton {
+  background: var(--gradient-primary);
+  border: none;
+  border-radius: var(--radius-full);
+  padding: var(--space-3) var(--space-6);
+  color: white;
+  font-weight: 600;
+  font-size: 0.875rem;
+  font-family: var(--font-inter);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  box-shadow: 0 4px 14px rgba(124, 58, 237, 0.4);
+}
+
+.todayButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(124, 58, 237, 0.5);
+}
+
+.weekDays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: var(--space-2);
+  margin-bottom: var(--space-3);
+}
+
+.weekDay {
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-tertiary);
+  padding: var(--space-3) 0;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-family: var(--font-inter);
+}
+
+.daysGrid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: var(--space-2);
+}
+
+.dayCell {
+  aspect-ratio: 1;
+  min-height: 80px;
+  background: var(--bg-secondary);
+  border: 2px solid transparent;
+  border-radius: var(--radius-xl);
+  padding: var(--space-2);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  position: relative;
+}
+
+.dayCell:hover {
+  border-color: var(--primary);
+  background: var(--gradient-subtle);
+  transform: scale(1.03);
+  box-shadow: var(--shadow-md);
+}
+
+.dayCell.otherMonth {
+  opacity: 0.4;
+  background: var(--bg-tertiary);
+}
+
+.dayCell.otherMonth:hover {
+  opacity: 0.6;
+}
+
+.dayCell.today {
+  border-color: var(--primary);
+  background: var(--gradient-subtle);
+}
+
+.dayCell.today .dayNumber {
+  background: var(--gradient-primary);
+  color: white;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  box-shadow: var(--shadow-colored);
+}
+
+.dayCell.hasEvents {
+  background: var(--surface-primary);
+  border-color: var(--border-primary);
+}
+
+.dayCell.hasEvents:hover {
+  border-color: var(--primary);
+  box-shadow: var(--shadow-lg), var(--shadow-colored);
+}
+
+.dayNumber {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: var(--space-2);
+  transition: all var(--transition-fast);
+}
+
+.eventDots {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: auto;
+}
+
+.eventDot {
+  width: 8px;
+  height: 8px;
+  border-radius: var(--radius-full);
+  flex-shrink: 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.moreIndicator {
+  font-size: 0.625rem;
+  font-weight: 700;
+  color: var(--primary);
+  padding: 2px 4px;
+  background: var(--gradient-subtle);
+  border-radius: var(--radius-sm);
+}
+
+/* ========================================
+   DARK MODE ADJUSTMENTS
+   ======================================== */
+[data-theme='dark'] .calendar {
+  background: var(--surface-primary);
+  border-color: var(--border-light);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme='dark'] .dayCell {
+  background: var(--bg-secondary);
+}
+
+[data-theme='dark'] .dayCell.otherMonth {
+  background: var(--bg-tertiary);
+}
+
+[data-theme='dark'] .dayCell.hasEvents {
+  background: var(--surface-primary);
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+@media (max-width: 768px) {
+  .calendar {
+    padding: var(--space-4);
+  }
+
+  .dayCell {
+    min-height: 60px;
+    padding: var(--space-1);
+  }
+
+  .dayNumber {
+    font-size: 0.75rem;
+  }
+
+  .eventDot {
+    width: 6px;
+    height: 6px;
+  }
+
+  .monthYear {
+    font-size: 1.125rem;
+    min-width: 150px;
+  }
+
+  .navButton {
+    width: 40px;
+    height: 40px;
+    font-size: 1.25rem;
+  }
+
+  .todayButton {
+    padding: var(--space-2) var(--space-4);
+    font-size: 0.8125rem;
+  }
+
+  .weekDay {
+    font-size: 0.625rem;
+    padding: var(--space-2) 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .dayCell {
+    min-height: 50px;
+  }
+
+  .eventDots {
+    gap: 2px;
+  }
+}

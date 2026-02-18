@@ -1,0 +1,199 @@
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: var(--z-modal);
+  padding: var(--space-6);
+  animation: fadeIn var(--transition-base) ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.modalContent {
+  background: var(--surface-primary);
+  border-radius: var(--radius-2xl);
+  width: 100%;
+  max-width: 500px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: var(--shadow-2xl);
+  animation: scaleIn var(--transition-slow) cubic-bezier(0.34, 1.56, 0.64, 1);
+  position: relative;
+  border: 1px solid var(--border-light);
+}
+
+@keyframes scaleIn {
+  from {
+    transform: translateY(20px) scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+/* ========================================
+   MODAL HEADER
+   ======================================== */
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-6) var(--space-6);
+  border-bottom: 1px solid var(--border-light);
+  background: var(--gradient-subtle);
+  border-radius: var(--radius-2xl) var(--radius-2xl) 0 0;
+}
+
+.modalTitle {
+  margin: 0;
+  font-size: 1.375rem;
+  font-weight: 700;
+  font-family: var(--font-poppins);
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+}
+
+.closeButton {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-lg);
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-light);
+  font-size: 1.5rem;
+  color: var(--text-tertiary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+  line-height: 1;
+}
+
+.closeButton:hover {
+  background: var(--danger, #EF4444);
+  color: white;
+  border-color: var(--danger, #EF4444);
+  transform: rotate(90deg);
+}
+
+/* ========================================
+   MODAL BODY
+   ======================================== */
+.modalBody {
+  padding: var(--space-6);
+}
+
+/* ========================================
+   MODAL FOOTER
+   ======================================== */
+.modalFooter {
+  padding: var(--space-4) var(--space-6) var(--space-6);
+  border-top: 1px solid var(--border-light);
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-3);
+  background: var(--bg-tertiary);
+  border-radius: 0 0 var(--radius-2xl) var(--radius-2xl);
+}
+
+/* ========================================
+   MODAL SIZES
+   ======================================== */
+.modalContent.small {
+  max-width: 400px;
+}
+
+.modalContent.medium {
+  max-width: 500px;
+}
+
+.modalContent.large {
+  max-width: 700px;
+}
+
+.modalContent.fullWidth {
+  max-width: 90vw;
+}
+
+/* ========================================
+   DARK MODE ADJUSTMENTS
+   ======================================== */
+[data-theme='dark'] .modalOverlay {
+  background: rgba(0, 0, 0, 0.75);
+}
+
+[data-theme='dark'] .modalContent {
+  background: var(--surface-primary);
+  border-color: var(--border-light);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+}
+
+[data-theme='dark'] .modalHeader {
+  border-bottom-color: var(--border-light);
+}
+
+[data-theme='dark'] .modalFooter {
+  border-top-color: var(--border-light);
+  background: var(--bg-tertiary);
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+@media (max-width: 640px) {
+  .modalOverlay {
+    padding: var(--space-4);
+    align-items: flex-end;
+  }
+  
+  .modalContent {
+    max-height: 85vh;
+    border-radius: var(--radius-2xl) var(--radius-2xl) 0 0;
+    animation: slideUp var(--transition-slow) cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  
+  @keyframes slideUp {
+    from {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  .modalHeader {
+    padding: var(--space-4) var(--space-5);
+  }
+  
+  .modalBody {
+    padding: var(--space-5);
+  }
+  
+  .modalFooter {
+    padding: var(--space-4) var(--space-5) var(--space-5);
+    flex-direction: column-reverse;
+  }
+  
+  .modalFooter button {
+    width: 100%;
+  }
+}

@@ -1,0 +1,314 @@
+.analytics {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: var(--space-8) var(--space-6);
+}
+
+.header {
+  margin-bottom: var(--space-8);
+}
+
+.title {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 800;
+  color: var(--text-primary);
+  margin: 0 0 var(--space-2) 0;
+  letter-spacing: -0.03em;
+  font-family: var(--font-poppins);
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  margin: 0;
+  font-weight: 500;
+}
+
+/* ========================================
+   STATS GRID
+   ======================================== */
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: var(--space-5);
+  margin-bottom: var(--space-8);
+}
+
+@media (min-width: 640px) {
+  .statsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .statsGrid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+.statCard {
+  overflow: hidden;
+}
+
+.statCard :global(.cardContent) {
+  padding: var(--space-5);
+}
+
+.statContent {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.statIcon {
+  font-size: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  background: var(--gradient-subtle);
+  border-radius: var(--radius-xl);
+  flex-shrink: 0;
+}
+
+.statInfo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.statValue {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  font-family: var(--font-poppins);
+  letter-spacing: -0.02em;
+}
+
+.statValue.confirmed {
+  color: #10b981;
+}
+
+.statValue.pending {
+  color: #f59e0b;
+}
+
+.statValue.declined {
+  color: #ef4444;
+}
+
+.statLabel {
+  font-size: 0.8125rem;
+  color: var(--text-tertiary);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ========================================
+   CHARTS GRID
+   ======================================== */
+.chartsGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+}
+
+@media (min-width: 768px) {
+  .chartsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.chartCard {
+  overflow: hidden;
+}
+
+.chartCard :global(.cardContent) {
+  padding: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.chartContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.chartTitle {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 var(--space-4) 0;
+  font-family: var(--font-poppins);
+  letter-spacing: -0.01em;
+}
+
+.chartContainer {
+  flex: 1;
+  min-height: 280px;
+}
+
+/* ========================================
+   UPCOMING EVENTS LIST
+   ======================================== */
+.upcomingList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  max-height: 320px;
+  overflow-y: auto;
+  padding-right: var(--space-2);
+}
+
+.upcomingItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-3) var(--space-4);
+  background: var(--bg-secondary);
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--border-light);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.upcomingItem:hover {
+  border-color: var(--primary);
+  background: var(--gradient-subtle);
+  transform: translateX(var(--space-1));
+}
+
+.upcomingInfo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  min-width: 0;
+  flex: 1;
+}
+
+.upcomingName {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-family: var(--font-poppins);
+}
+
+.upcomingDate {
+  font-size: 0.8125rem;
+  color: var(--text-tertiary);
+  font-weight: 500;
+}
+
+.upcomingAttendees {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-1);
+  flex-shrink: 0;
+  margin-left: var(--space-3);
+}
+
+.upcomingCount {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--primary);
+  font-family: var(--font-poppins);
+}
+
+.upcomingLabel {
+  font-size: 0.6875rem;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+}
+
+.noUpcoming {
+  text-align: center;
+  padding: var(--space-10) var(--space-4);
+}
+
+.noUpcomingIcon {
+  font-size: 3rem;
+  display: block;
+  margin-bottom: var(--space-3);
+  opacity: 0.7;
+}
+
+.noUpcomingText {
+  font-size: 0.9375rem;
+  color: var(--text-secondary);
+  margin: 0;
+  font-weight: 500;
+}
+
+/* ========================================
+   DARK MODE ADJUSTMENTS
+   ======================================== */
+[data-theme='dark'] .statValue.confirmed {
+  color: #34d399;
+}
+
+[data-theme='dark'] .statValue.pending {
+  color: #fbbf24;
+}
+
+[data-theme='dark'] .statValue.declined {
+  color: #f87171;
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+@media (max-width: 640px) {
+  .analytics {
+    padding: var(--space-6) var(--space-4);
+  }
+
+  .statIcon {
+    width: 56px;
+    height: 56px;
+    font-size: 2rem;
+  }
+
+  .statValue {
+    font-size: 1.5rem;
+  }
+
+  .chartTitle {
+    font-size: 0.9375rem;
+  }
+}
+
+/* ========================================
+   SCROLLBAR FOR UPCOMING LIST
+   ======================================== */
+.upcomingList::-webkit-scrollbar {
+  width: 6px;
+}
+
+.upcomingList::-webkit-scrollbar-track {
+  background: var(--bg-tertiary);
+  border-radius: var(--radius-full);
+}
+
+.upcomingList::-webkit-scrollbar-thumb {
+  background: var(--gradient-primary);
+  border-radius: var(--radius-full);
+}
+
+.upcomingList::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}
